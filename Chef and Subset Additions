@@ -1,0 +1,16 @@
+T= int(input())
+for i in range(T):
+    N,X,Y= map(int, input().split())
+    A = list(map(int,input().strip().split()))[:N]
+    B = list(map(int,input().strip().split()))[:N]
+    check=0
+    for j in range(0,N):
+        if((A[j]+X)==B[j] or (A[j]+Y)==B[j]):
+            check+=1
+            
+    if (check== N):
+        print("YES")
+    else:
+        print("NO")
+            
+    
