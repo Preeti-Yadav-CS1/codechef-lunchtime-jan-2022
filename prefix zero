@@ -1,0 +1,43 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long int
+
+
+ll calculate(ll mid, string s)
+{
+    ll sum = 0;
+    for(int i=mid;i>=0;i--)
+    {
+        ll Q = (int(s[i])-int('0')+sum)%10;
+        if(Q==0)
+            continue;
+        sum+=10-Q;
+    }
+    return sum;
+}
+
+int main()
+{
+    int T;
+    cin>>T;
+    while(T--)
+    {
+        ll N,K;
+        cin >> N >> K;
+        string s;
+        cin >> s;
+        ll start=0,end=N-1,sum1=0;
+        while(start<=end)
+        {
+            ll mid=(start+end)/2;
+            if(calculate(mid,s)>K)
+                end=mid-1;
+            else
+            {
+                sum1 = mid+1;
+                start=mid+1;
+            }
+        }
+        cout<<sum1<<endl;
+    }
+}
